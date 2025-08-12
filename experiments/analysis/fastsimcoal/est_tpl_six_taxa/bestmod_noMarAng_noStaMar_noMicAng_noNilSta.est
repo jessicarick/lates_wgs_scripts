@@ -1,0 +1,57 @@
+// Priors and rules file
+// *********************
+[PARAMETERS]
+//#isInt? #name #dist. #min #max
+//all Ns are in number of haploid individuals
+1	POP0	unif	1000	2e6	output
+1	POP1	unif	1000	2e6	output
+1	POP2	unif	1000	2e6	output
+1	POP3	unif	1000	2e6	output
+1	POP4	unif	1000	2e6	output
+1	POP5	unif	1000	2e6	output
+0	RSANC01	logunif	0.1	20	output
+0	RSANC12	logunif	0.1	20	output
+0	LTANC0	logunif	0.1	20	output
+0	LTANC1	logunif	0.1	20	output
+0	LTANC2	logunif	0.1	20	output
+1	TIME0	unif	1000	1e6	hide
+1	TIME1	unif	1000	1e6	hide
+1	TIME2	unif	1000	1e6	hide
+1	TIME4	unif	1000	1e6	hide
+1	TIME5	unif	1000	1e6	hide
+0	MIG12	logunif	1e-8	0.1	output
+0	MIG21	logunif	1e-8	0.1	output
+0	MIG14	logunif	1e-8	0.1	output
+0	MIG41	logunif	1e-8	0.1	output
+0	MIG15	logunif	1e-8	0.1	output
+0	MIG51	logunif	1e-8	0.1	output
+1	TADM12	unif	1000	2e6	output
+1	TADM14	unif	1000	2e6	output
+1	TADM15	unif	1000	2e6	output
+1	TADM23	unif	1000	2e6	output
+1	TADM25	unif	1000	2e6	output
+1	TADM34	unif	1000	2e6	output
+0	MIG23	logunif	1e-8	0.1	output	
+0	MIG32   logunif 1e-8    0.1     output
+0	MIG25   logunif 1e-8    0.1     output
+0	MIG52   logunif 1e-8    0.1     output
+0	MIG34   logunif 1e-8    0.1     output
+0	MIG43   logunif 1e-8    0.1     output
+
+[RULES]
+
+[COMPLEX PARAMETERS]
+1 MAX2 = TADM25 %max% TADM23 hide
+1 MAX3 = TADM34 %max% MAX2 hide
+
+1 MAXADM12 = TADM12 %max% TADM12 hide
+1 MAXADM34 = TADM14 %max% TADM15 hide
+
+1 MAXM12 = MAXADM12 %max% MAX3 hide
+1 MAXM34 = MAXADM34 %max% MAX3 hide
+
+1 TDIVLT1LT2 = MAXM12+TIME4 output
+1 TDIVLT3LT4 = MAXM34+TIME5 output
+1 FIRSTDIV = TDIVLT3LT4 %max% TDIVLT1LT2 hide
+1 TDIVLTLT = FIRSTDIV+TIME1 output
+1 TDIVNILLT = TDIVLTLT+TIME2 output
