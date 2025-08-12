@@ -1,0 +1,6 @@
+Lmic	Lang	Lnil
+Lsta	Lang	Lnil
+Lmar	Lang	Lnil
+Lmar	Lmic	Lnil
+Lmar	Lsta	Lnil
+Lsta	Lmic	Lnil
