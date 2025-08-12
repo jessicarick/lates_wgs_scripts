@@ -1,0 +1,10 @@
+#for spp in `cat spp_pairs.txt`
+#for spp in lang.lsta.lnil
+#	for mod in `cat models_allsites.txt`
+	for mod in fbranch_model_new_new
+#	do for mod in alladmix.gf1_threepop
+		do echo "submiting for $mod"
+		sbatch run_fsc26_master_allsites.sh $mod $mod
+		sleep 1
+	done
+#done	 
