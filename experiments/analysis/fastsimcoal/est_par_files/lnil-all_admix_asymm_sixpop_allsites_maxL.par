@@ -1,0 +1,54 @@
+//Parameters for the coalescence simulation program : fastsimcoal.exe
+6 samples to simulate :
+//Population effective sizes (number of genes)
+376223
+38343
+273364
+331578
+180575
+248990
+//Samples sizes and samples age
+2
+2
+6
+6
+6
+6
+//Growth rates : negative growth implies population expansion
+0
+0
+0
+0
+0
+0
+//Number of migration matrices : 0 implies no migration between demes
+1
+//Migration matrix 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+//historical event: time, source, sink, migrants, new deme size, new growth rate, migration matrix index
+14 historical event
+11000000 1 0 1 1.906857098391479e-01 0 0
+496860 2 1 1 1.985756939808642e+01 0 0
+227780 4 2 1 3.234125150004832e-01 0 0
+218527 3 2 1 5.045526655832792e+00 0 0
+112134 5 4 1 4.774280064517757e+00 0 0
+307036 2 1 3.751449475245753e-04 1 0 0
+99824 1 2 1.092213313820035e-02 1 0 0
+99824 2 1 4.932740912306770e-05 1 0 0
+117845 1 3 1.629296812047571e-04 1 0 0
+117845 3 1 3.525589803506499e-05 1 0 0
+3112 1 4 1.224468511652108e-01 1 0 0
+3112 4 1 1.144527725671665e-05 1 0 0
+48339 1 5 1.296863645082913e-05 1 0 0
+48339 5 1 2.654901640981012e-04 1 0 0
+//Number of independent loci [chromosome]
+1 0
+//Per chromosome: Number of contiguous linkage Block: a block is a set of contiguous loci
+1
+//per Block:data type, number of loci, per generation recombination and mutation rates and optional parameters
+FREQ 1 0 3.5e-9 OUTEXP
