@@ -1,0 +1,25 @@
+scriptdir=/project/latesgenomics/jrick/latesWGS_2018/msmc
+
+bam_list=/project/latesgenomics/jrick/latesWGS_2018/msmc/latesWGS_2.bamlist
+bam_count=$(wc -l < $bam_list)
+
+echo "starting the mask file creation"
+
+sbatch --account=latesgenomics \
+--job-name=msmc_mask \
+--mail-type=END,FAIL \
+--mail-user=jrick@uwyo.edu \
+--output=outs/std_create_mask_file_%A_%a \
+--error=outs/std_create_mask_file_%A_%a \
+--mem=0 \
+--nodes=1 \
+--ntasks-per-node=1 \
+--time=1-15:00:00 \
+--array=1-15 \
+$scriptdir/create_mask_file.sh
+
+date
+
+#IF YOU WANT TO THROTTLE
+#slurm_throttle=$((bam_count/5))
+#--array=1-${bam_count}%${slurm_throttle} \

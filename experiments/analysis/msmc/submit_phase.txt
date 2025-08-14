@@ -1,0 +1,12 @@
+for i in `cat INDS`; \
+do echo $i; \
+IND=`echo ${i[@]}`; \
+sbatch --account=WagnerLab \
+--mail-type=END \
+--output=/project/WagnerLab/jrick/msmc_Sept2017/outs/stdout_${i}_phase \
+--error=/project/WagnerLab/jrick/msmc_Sept2017/outs/stderr_${i}_phase \
+--nodes=1 \
+--ntasks-per-node=16 \
+--time=0-01:00:00 \
+./run_phase.sh $i; \
+done

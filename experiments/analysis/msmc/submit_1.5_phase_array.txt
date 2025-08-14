@@ -1,0 +1,21 @@
+#!/bin/bash
+
+#scriptdir=$(dirname "$0")
+
+#create bam list
+bam_list=/project/latesgenomics/jrick/latesWGS_2018/msmc/latesWGS_2.bamlist
+#[ ! -f $bam_list ] && find /project/ltcichlidgenomics/cichlid_demography/msmc2/wgs_bamfiles | grep "rg.bam$" > $bam_list
+
+[ ! -d outs ] && mkdir outs
+
+#chromosomes that failed for reasons other than wall time
+#chr2, chr4, chr5, chr6, chr7, chr10, chr12, chr13
+
+sbatch --account=latesgenomics \
+--job-name=msmc2_1.5_multiInd \
+--nodes=1 \
+--ntasks-per-node=1 \
+--time=0-00:5:00 \
+--array=1-24 \
+msmc_1.5_phase_array_sampleparallel.sh $bam_list file
+

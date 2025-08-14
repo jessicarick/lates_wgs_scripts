@@ -1,0 +1,12 @@
+bamlist=$1; \
+nchrom=`wc -l CHROM_only`; \
+sbatch --account=latesgenomics \
+--job-name=aln_bamlist \
+--mail-type=ALL \
+--output=outs/stdouterr_${bamlist}_msmc1_%A_%a \
+--error=outs/stdouterr_${bamlist}_msmc1_%A_%a \
+--nodes=1 \
+--ntasks-per-node=16 \
+--array=0-23 \
+--time=1-00:00:00 \
+msmc_1_call_multiInd.sh $bamlist; \

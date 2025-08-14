@@ -1,0 +1,14 @@
+POP_FILE=$1
+POP=`basename $POP_FILE .ind`
+
+echo "submitting job for $POP"
+
+sbatch --account=latesgenomics \
+--output=outs/std_msmc2_generateInput_${POP}_%A \
+--error=outs/std_msmc2_generateInput_${POP}_%A \
+--nodes=1 \
+--ntasks-per-node=8 \
+--time=0-8:00:00 \
+--mail-type=END \
+--job-name=msmc2 \
+msmc_2_generateInput_multiInd_parallel.sh whatshap $POP_FILE
